@@ -689,7 +689,11 @@
 				focus     : function() { self.ignoreBlur = false; return self.onFocus.apply(self, arguments); },
 				paste     : function() { return self.onPaste.apply(self, arguments); }
 			});
-	
+
+			$wrapper.on('blur', function ($e) {
+				self.onBlur.apply(self, arguments);
+			});
+
 			$document.on('keydown' + eventNS, function(e) {
 				self.isCmdDown = e[IS_MAC ? 'metaKey' : 'ctrlKey'];
 				self.isCtrlDown = e[IS_MAC ? 'altKey' : 'ctrlKey'];
