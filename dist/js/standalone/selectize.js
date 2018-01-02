@@ -1321,9 +1321,12 @@
 				keyup     : function() { return self.onKeyUp.apply(self, arguments); },
 				keypress  : function() { return self.onKeyPress.apply(self, arguments); },
 				resize    : function() { self.positionDropdown.apply(self, []); },
-				blur      : function() { return self.onBlur.apply(self, arguments); },
 				focus     : function() { self.ignoreBlur = false; return self.onFocus.apply(self, arguments); },
 				paste     : function() { return self.onPaste.apply(self, arguments); }
+			});
+
+			$wrapper.on('blur', function ($e) {
+				self.onBlur.apply(self, arguments);
 			});
 	
 			$document.on('keydown' + eventNS, function(e) {
